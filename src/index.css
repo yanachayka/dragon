@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+/* Caldera, adapted to a mobile product: five colours, flat, no shadows. */
+@theme {
+  --color-ember: #fc5000;
+  --color-limestone: #f7f6f2;
+  --color-pumice: #e2e2df;
+  --color-obsidian: #070607;
+  --color-chalk: #ffffff;
+
+  /* Oswald 600 stands in for PP Neue Corp Compact: the reference's own
+     substitutes (Bebas Neue, Anton, Druk) ship no Cyrillic glyphs. */
+  --font-display: 'Oswald', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-meta: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-card: 40px;
+  --radius-pill: 800px;
+  --radius-input: 100px;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-pumice);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-pumice);
+    color: var(--color-obsidian);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  input {
+    font-family: inherit;
+    font-weight: 500;
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-obsidian);
+    outline-offset: 2px;
+  }
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  /* The reference's +0.02em tracking. Never negative. */
+  letter-spacing: 0.02em;
+}
+
+@utility meta {
+  font-family: var(--font-meta);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+/* 1.5px dotted Obsidian — dotted, not dashed, not solid. */
+@utility divider-dotted {
+  border: 0;
+  border-top: 1.5px dotted var(--color-obsidian);
+  margin: 0;
+}
+
+@keyframes press-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.93);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@utility press-pop {
+  animation: press-pop 220ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,6 @@
+node_modules
+dist
+.DS_Store
+
+# Local tooling: launch.json hardcodes absolute paths to this machine's Node.
+.claude/
